@@ -129,7 +129,8 @@ docker push <ecr_repo_uri>:<tag>
 ```
 
 To proper set of commands to push the registry from the local to the ECR\
-![ViewCommands](https://drive.google.com/file/d/11tOfn96wdMK0r2oOgqw6kP5mHP2ee20y/view?usp=sharing)
+![ViewCommands](https://github.com/Danishbansal-cmd/Cloud_Native_Application/assets/67588499/4fc90a81-7666-470f-9318-b4f9b45421e6)
+
 
 ## Step 7:
 Copy the code specified below and name it "eks.py"
@@ -193,7 +194,8 @@ api_instance.create_namespaced_service(
 ```
 
 Make sure to change the "your_image" to your uri, that you can get on this page\
-![page](https://drive.google.com/file/d/11tOfn96wdMK0r2oOgqw6kP5mHP2ee20y/view?usp=sharing)
+![page](https://github.com/Danishbansal-cmd/Cloud_Native_Application/assets/67588499/2efdb73e-5e3a-4bfc-8e94-1f26dabe8bb2)
+
 
 
 ## Step 8:
@@ -201,7 +203,7 @@ Create the AWS EKS cluster\
 Type the name of the cluster and choose the role if it has created\
 Otherwise create the IAM role with "AWS Service" and select the use case to "EKS Cluster" and create it\
 After choosing the IAM role make a selection in the EKS Cluster with the appropriate roles assigned to it\
-![createEksCluster](https://drive.google.com/file/d/1sLNDn9yMQM_cbC1AVBFESdWgVat9dcN3/view?usp=sharing)\
+![createEksCluster](https://github.com/Danishbansal-cmd/Cloud_Native_Application/assets/67588499/776b4b60-02e5-4f31-8e81-0a9a1112914f)\
 Then choose next
 
 On the next page choose the Default VPC and default Security Group with Ingress rule of "5000" port
@@ -210,7 +212,7 @@ And choose next util you see "create" Button
 ## Step 9:
 Now open the EKS Cluster that we have created and choose the "Compute" Tab\
 Click on "Add node group" Button to create the node\
-![createNodeGroup](https://drive.google.com/file/d/1jkMF_toS95I-NUX8guw0JlWOo7zaUI-z/view?usp=sharing)\
+![createNodeGroup](https://github.com/Danishbansal-cmd/Cloud_Native_Application/assets/67588499/372b9cbc-26f7-4687-8059-0eb738721e19)\
 Select the appropriate role if it has been created\
 Otherwise create the role with "AWS Service" as selected, select the use case to "EC2" and attach the "AmazonEKSWorkerNodePolicy", "AmazonEC2ContainerRegistryReadOnly" policies to the role\
 Choose next Button and dont change the other configurations, leave it as they are,\
