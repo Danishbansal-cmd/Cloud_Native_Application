@@ -9,20 +9,23 @@ PIP(Preferred Installer Program)
 All the steps are given based on the windows OS
 
 ## Step 1:
-git clone <repository url>
+```
+git clone https://github.com/Danishbansal-cmd/Cloud_Native_Application
+```
+
 Clone an application of Python to demonstrate the CPU Utilization and Memory Utilization
 
 The application uses different Libraries like
-psutil - https://pypi.org/project/psutil/
+psutil - https://pypi.org/project/psutil/\
 It a cross-platform library to retrieve the running processes and system utilizations
 
-flask - https://pypi.org/project/Flask/
+flask - https://pypi.org/project/Flask/\
 It is lightweight WSGI(Web Server Gateway Interface) for the Web application framework
 
-boto3 - https://pypi.org/project/boto3/
+boto3 - https://pypi.org/project/boto3/\
 It is AWS SDK for the Python which allows the developers and the practitioners to create the application based on python with the use of Amazon Web Services and Resources like ECS, EKS, Amazon S3, Amazon Elastic Cloud Compute, and many more.
 
-plotly - https://pypi.org/project/plotly/
+plotly - https://pypi.org/project/plotly/\
 plotly.py is an interactive browser-based library built on top of plotly.js, it has used more than 30 chart type, incuding scientific charts, 3d charts and more
 
 ## Step 2:
@@ -47,12 +50,10 @@ def index():
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
 ```
-
-run the command, it is used to install all the dependencies that are listed there
+Run the command Specified below, it is used to install all the dependencies that are listed there
 ```
 pip install -r requirements.txt
 ```
-
 It is used to enable the debugger, so that if the server find any changes, will show an interactive debugger during the error or a request
 ```
 app.debug = True
@@ -60,7 +61,8 @@ app.debug = True
 After it is successful, it will run on the [localhost:5000](http://localhost:5000/), visit this link to view your application
 
 ## Step 3:
-Now we will create the docker file which will be used to create  the image to run the container
+Now we will create the docker file which will be used to create the image of the docker\
+Docker image is used to run the container\
 Copy the code into the file and name it "Dockerfile"
 
 ```
@@ -86,7 +88,7 @@ First line "FROM python:3.8-slim" which is used to get the base image Python fro
 Last line CMD '--host=0.0.0.0' is used to make the docker the port forwarding to the specified port, otherwise the flask application will only be accessible from within the container not the outside\
 localhost has the ip'127.0.0.1'
 
-to create the docker image run the command
+To create the docker image run the command
 ```
 docker build -t <any_custom_image_name_you_want_to_specify>
 ```
@@ -96,8 +98,7 @@ Run the command specified below, to check all the docker images
 ```
 docker images
 ```
-
-To run the container created from the image that we have just created, run the command specified below
+To run the container of the image that we have just created, run the command specified below
 ```
 docker run -p 5000:5000 <docker_image_id>
 ```
@@ -127,7 +128,7 @@ Push the docker image to the AWS ECR repository
 docker push <ecr_repo_uri>:<tag>
 ```
 
-To proper set of commands to push the registry from the local to the ECR
+To proper set of commands to push the registry from the local to the ECR\
 ![ViewCommands](https://drive.google.com/file/d/11tOfn96wdMK0r2oOgqw6kP5mHP2ee20y/view?usp=sharing)
 
 ## Step 7:
@@ -191,31 +192,31 @@ api_instance.create_namespaced_service(
 )
 ```
 
-Make sure to change the "your_image" to your uri, that you can get on this page
+Make sure to change the "your_image" to your uri, that you can get on this page\
 ![page](https://drive.google.com/file/d/11tOfn96wdMK0r2oOgqw6kP5mHP2ee20y/view?usp=sharing)
 
 
 ## Step 8:
-Create the AWS EKS cluster
+Create the AWS EKS cluster\
 Type the name of the cluster and choose the role if it has created\
-Otherwise create the IAM role with "AWS Service" and select the use case to "EKS Cluster" and create it
-After choosing the IAM role make a selection in the EKS Cluster with the appropriate roles assigned to it
-![createEksCluster](https://drive.google.com/file/d/1sLNDn9yMQM_cbC1AVBFESdWgVat9dcN3/view?usp=sharing)
+Otherwise create the IAM role with "AWS Service" and select the use case to "EKS Cluster" and create it\
+After choosing the IAM role make a selection in the EKS Cluster with the appropriate roles assigned to it\
+![createEksCluster](https://drive.google.com/file/d/1sLNDn9yMQM_cbC1AVBFESdWgVat9dcN3/view?usp=sharing)\
 Then choose next
 
 On the next page choose the Default VPC and default Security Group with Ingress rule of "5000" port
 And choose next util you see "create" Button
 
 ## Step 9:
-Now open the EKS Cluster that one have created and choose the "Compute" Tab
-Click on "Add node group" Button to create the node
-![createNodeGroup](https://drive.google.com/file/d/1jkMF_toS95I-NUX8guw0JlWOo7zaUI-z/view?usp=sharing)
-Select the appropriate role if it has been created
-Otherwise create the role with "AWS Service" as selected, select the use case to "EC2" and attach the "AmazonEKSWorkerNodePolicy", "AmazonEC2ContainerRegistryReadOnly" policies to the role
-Choose next Button and dont change the other configurations, leave it as they are,
-Don't change the Instance type from t3.medium to t2.micro or less
-Otherwise the node group will not get created
-Choose the next button until you see the create button
+Now open the EKS Cluster that we have created and choose the "Compute" Tab\
+Click on "Add node group" Button to create the node\
+![createNodeGroup](https://drive.google.com/file/d/1jkMF_toS95I-NUX8guw0JlWOo7zaUI-z/view?usp=sharing)\
+Select the appropriate role if it has been created\
+Otherwise create the role with "AWS Service" as selected, select the use case to "EC2" and attach the "AmazonEKSWorkerNodePolicy", "AmazonEC2ContainerRegistryReadOnly" policies to the role\
+Choose next Button and dont change the other configurations, leave it as they are,\
+Don't change the Instance type from t3.medium to t2.micro or less\
+Otherwise the node group will not get created\
+Choose the next button until you see the create button\
 
 Run the file using the "python eks.py" command
 
