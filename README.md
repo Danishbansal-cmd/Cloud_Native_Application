@@ -88,9 +88,9 @@ First line "FROM python:3.8-slim" which is used to get the base image Python fro
 Last line CMD '--host=0.0.0.0' is used to make the docker the port forwarding to the specified port, otherwise the flask application will only be accessible from within the container not the outside\
 localhost has the ip'127.0.0.1'
 
-To create the docker image run the command
+To create the docker image run the command, the dot(".") is an important part of the command, because it represents the directory where the Dockerfile is present
 ```
-docker build -t <any_custom_image_name_you_want_to_specify>
+docker build -t <any_custom_image_name_you_want_to_specify> .
 ```
 
 ## Step 4:
